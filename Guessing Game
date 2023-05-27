@@ -1,0 +1,48 @@
+import random
+
+GuessTaken= 0
+print('''We are about to commence a game in which you are expected to guess a number on my mind ranging from the values 1-20.
+Mind you, you only have 6 tries each, after which, if you are unable to accurately guess the number on my mind, 
+you will be disqualified. So therefore, ENJOY!... \n''')
+
+Player= input ('what is your name?\n').lower()
+
+number=random.randint(1,20)
+print ('\n Well, '+ Player+ ', i am thinking of a number between 1 and 20')
+
+
+while GuessTaken < 6:
+    data_valid=False
+    while data_valid==False:
+        guess=input('take a guess \n')
+        try: 
+            guess=int(guess)
+        except:
+            print('only numbers in integer format are accepted. Check your input and make the appropriate correction')
+            continue 
+        if  guess < 0 or guess> 20:
+            print('guesses must be between 0 and 20 only.')
+            continue
+        else: data_valid= True
+     
+    
+    GuessTaken+=1
+    
+    
+    if guess< number:
+        print('your guess is too low')
+        
+    
+    if guess>number:
+        print ('your guess is too high')
+    
+    if guess == number:
+        break
+
+if guess==number:
+    GuessTaken=str(GuessTaken)
+    print('Good Job,'+Player+'! You guessed my number in '+ GuessTaken+ ' guesses!...')
+
+if guess!= number:
+    number = str(number)
+    print('Nope, you have exhausted your chances. The number i was thinking of was '+ number)
